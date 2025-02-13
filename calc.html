@@ -3,120 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calculator</title>
-        <style>
-            body {
-                background-color: #222;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-            }
-
-                .container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            h1 {
-                font-size: 1cm;
-                color: white;
-                font-family: "Courier New", monospace;
-            }
-
-            .calculadora {
-                background: #333;
-                padding: 20px;
-                border-radius: 10px;
-                text-align: center;
-                width: 250px;
-            }
-
-            #display {
-                width: 240px;
-                height: 50px;
-                font-size: 1.5em;
-                text-align: right;
-                margin-bottom: 10px;
-                border: none;
-                background: #111;
-                color: white;
-                padding: 5px;
-            }
-            .teclado {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-            }
-
-            button {
-                height: 60px;
-                font-size: 1.2em;
-                border: none;
-                background: #444;
-                color: white;
-                cursor: pointer;
-                border-radius: 5px;
-            }
-
-            button:hover {
-                background: #666;
-            }
-        </style>
-        <script>
-            const frase = "JavaScript Calculator!";
-            let i = 0;
-
-            function animacao() {
-                if (i < frase.length) {
-                    document.getElementById("anim").textContent += frase[i];
-                    setTimeout(animacao, 100);
-                    i++
-                }
-            }
-
-            document.addEventListener("DOMContentLoaded", function() {animacao()});
-        </script>
-        <script>
-            const charInput = function(char) {
-                if (typeof char == "number") {
-                    document.getElementById("display").value += char;   
-                
-                } else { 
-                    switch (char) {
-                        default:
-                            document.getElementById("display").value += char;
-                            break;
-                        case "C":
-                            document.getElementById("display").value = "";
-                            break;
-                        case "=":
-                            try {
-                                document.getElementById("display").value =
-                                eval(document.getElementById("display").value);
-                            } catch {
-                                document.getElementById("display").value = "Erro";
-                            }
-                    }
-                };
-            }
-        </script>
+        <link rel="stylesheet" href="style.css">
+        <title>Calculator</title>       
     </head>
-    <body>
+    <body>        
         <div class="container">
             <h1 id="anim"></h1>
             <div class="calculadora">                
                 <input type="text" id="display" disabled>
                 <div class="teclado">
                     <button onclick="charInput(7)">7</button> <button onclick="charInput(8)">8</button> <button onclick="charInput(9)">9</button> <button onclick="charInput('/')">/</button>
-                    <button onclick="charInput(4)">4</button> <button onclick="charInput(5)">5</button> <button onclick="charInput(6)">6</button> <button onclick="charInput('*')">*</button>
+                    <button onclick="charInput(4)">4</button> <button onclick="charInput(5)">5</button> <button onclick="charInput(6)">6</button> <button onclick="charInput('*')">x</button>
                     <button onclick="charInput(1)">1</button> <button onclick="charInput(2)">2</button> <button onclick="charInput(3)">3</button> <button onclick="charInput('-')">-</button>
                     <button onclick="charInput(0)">0</button> <button onclick="charInput('C')">C</button> <button onclick="charInput('=')">=</button> <button onclick="charInput('+')">+</button>
                 </div>
             </div>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
